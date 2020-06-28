@@ -7,7 +7,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import questionDict from './questions3.json';
+import questions from './questions.json';
+import categories from './categories.json'
+import reverseDict from './questions2.json'
 
 
 
@@ -29,7 +33,18 @@ class Quiz extends React.Component {
     }
 
     submitResults = () => {
-        console.log('hi');
+
+        for (var i = 0; i < this.props.numberQuestions; ++i) {
+            if (this.state.checked[i]) {
+                var question = questions[i];
+                var category = questionDict[question];
+                categories[category] += 1;
+            }
+        }
+        for (var key in categories) {
+            categories[key] = categories[key] / reverseDict[key].length;
+        }
+        console.log(categories);
     }
 
 
