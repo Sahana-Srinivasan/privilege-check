@@ -12,6 +12,7 @@ import questionDict from './questions3.json';
 import questions from './questions.json';
 import categories from './categories.json'
 import reverseDict from './questions2.json'
+import "./App.css"
 
 
 
@@ -71,7 +72,7 @@ class Quiz extends React.Component {
     render() {
         var questions = this.props.questions.map((question, index) => {
             return (
-                <ListItem key={index} role={undefined} dense button onClick={() => this.handleToggle(index)}>
+                <ListItem key={index} role={undefined} button onClick={() => this.handleToggle(index)}>
                     <ListItemIcon>
                         <Checkbox
                           edge="start"
@@ -87,16 +88,18 @@ class Quiz extends React.Component {
         })
 
         return (
-            <Container>
-                <div>
+            <Container maxWidth="md">
+                <div id="quiz">
+                    <br></br>
+                    <p></p>
                     <Typography variant="h4" align="center" margin-top="10vh">
                         Privilege Check
                     </Typography>
-                    <List>
+                    <List id="list">
                         {questions}
                     </List>
                     <br></br>
-                    <div>
+                    <div id="link" align="center">
                         <Link to={`/results`} className="btn btn-primary" onClick={this.submitResults}>Get Results</Link>
                     </div>
                 </div>
