@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
 import Quiz from './Quiz.js'
+import Results from './Results.js'
 import questions from './questions.json'
+import { Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 
 function App() {
@@ -12,15 +13,15 @@ function App() {
       array.push(false);
   }
   return (
-    <div className="App">
-      <Container>
-        <br></br>
-          <Typography variant="h4" align="center" margin-top="10vh">
-            Privilege Check
-          </Typography>
-          <Quiz questions={questions} numberQuestions={questions.length} checked={array}/>
-      </Container>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path={`/`} render={() => <Quiz questions={questions} numberQuestions={questions.length} checked={array}/>}/>
+          <Route exact path={`/results`} render={() => <Results/>} />
+        </Switch>
+      </div>
+
+    </Router>   
   );
 }
 

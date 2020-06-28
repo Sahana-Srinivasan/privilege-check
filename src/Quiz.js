@@ -4,7 +4,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import { Link } from 'react-router-dom'
+
+
 
 class Quiz extends React.Component {
     constructor(props) {
@@ -21,6 +26,10 @@ class Quiz extends React.Component {
         const edit = !(prev[0]);
         checked.splice(index, 0, edit);
         this.setState(checked);
+    }
+
+    submitResults = () => {
+        console.log('hi');
     }
 
 
@@ -43,13 +52,20 @@ class Quiz extends React.Component {
         })
 
         return (
-            <div>
-                <List>
-                    {questions}
-                </List>
-                <br></br>
-                <Button variant="contained" color="primary">Get Results</Button>
-            </div>
+            <Container>
+                <div>
+                    <Typography variant="h4" align="center" margin-top="10vh">
+                        Privilege Check
+                    </Typography>
+                    <List>
+                        {questions}
+                    </List>
+                    <br></br>
+                    <div>
+                        <Link to={`/results`} className="btn btn-primary" onClick={this.submitResults}>Get Results</Link>
+                    </div>
+                </div>
+            </Container>
         );
     }
 }
