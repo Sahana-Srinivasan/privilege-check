@@ -19,7 +19,8 @@ class Quiz extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: this.props.checked.slice()
+            checked: this.props.checked.slice(),
+            postResponse: ""
         }
     }
 
@@ -45,6 +46,25 @@ class Quiz extends React.Component {
             categories[key] = categories[key] / reverseDict[key].length;
         }
         console.log(categories);
+        console.log('posting to flask');
+
+        fetch("/result", {
+            method:"POST",
+            cache: "no-cache",
+            headers:{
+                "content_type":"application/json",
+            },
+            body:JSON.stringify(categories)
+            }
+        ).then(response => {
+    
+        return response.json()
+      })
+      .then(json => {
+        this.props.sendResults(json[0]);
+      })
+
+
     }
 
 

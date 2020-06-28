@@ -7,22 +7,38 @@ import { Route, Switch } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 
 
-function App() {
-  var array = [];
-  for(var i = 0; i < questions.length; ++i) {
-      array.push(false);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: {}
+    }
   }
-  return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route exact path={`/`} render={() => <Quiz questions={questions} numberQuestions={questions.length} checked={array}/>}/>
-          <Route exact path={`/results`} render={() => <Results/>} />
-        </Switch>
-      </div>
 
-    </Router>   
-  );
+  updateResults = (results) => {
+    this.setState({results});
+  }
+
+  render () {
+    var array = [];
+    for(var i = 0; i < questions.length; ++i) {
+        array.push(false);
+    }
+    return (
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route exact path={`/`} render={() => 
+               <Quiz questions={questions} 
+                     numberQuestions={questions.length} 
+                     checked={array}
+                     sendResults={this.updateResults}/>}/>
+            <Route exact path={`/results`} render={() => <Results results={results}/>} />
+          </Switch>
+        </div>
+      </Router>   
+    );
+  }
 }
 
 export default App;
