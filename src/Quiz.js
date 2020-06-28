@@ -12,6 +12,7 @@ import questionDict from './questions3.json';
 import questions from './questions.json';
 import categories from './categories.json'
 import reverseDict from './questions2.json'
+import { useEffect } from 'react';
 import "./App.css"
 
 
@@ -46,10 +47,12 @@ class Quiz extends React.Component {
         for (var key in categories) {
             categories[key] = categories[key] / reverseDict[key].length;
         }
+        console.log('this is what we sent to flask:');
         console.log(categories);
         console.log('posting to flask');
 
-        fetch("/result", {
+   
+        fetch("/results", {
             method:"POST",
             cache: "no-cache",
             headers:{
@@ -57,13 +60,16 @@ class Quiz extends React.Component {
             },
             body:JSON.stringify(categories)
             }
-        ).then(response => {
-    
-        return response.json()
-      })
-      .then(json => {
-        this.props.sendResults(json[0]);
-      })
+            ).then(response => {
+                
+                return response.json()
+            })
+            .then(json => {
+                console.log("this is the json we got back!")
+                console.log(json);
+                this.props.sendResults(json);
+        });
+        
 
 
     }
