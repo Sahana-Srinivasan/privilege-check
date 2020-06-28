@@ -1,0 +1,39 @@
+.App {
+  background-color: #0A4C80;
+}
+
+#quiz {
+ background-color: white;
+ border-radius: 30px;
+}
+
+#list {
+  margin-left:20px;
+  margin-right:10px;
+}
+
+#results-page {
+  min-height: 100vh;
+  background-color: #0A4C80;
+}
+
+#incomplete {
+  min-height: 100vh;
+  background-color: #0A4C80;
+}
+
+#results {
+  background-color: white;
+  border-radius: 30px;
+ }
+
+ #blurb {
+  background-color: white;
+  border-radius: 30px;
+ }
+
+
+ #intro {
+   margin-left: 40px;
+   margin-right: 40px;
+ }
