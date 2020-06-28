@@ -7,6 +7,10 @@ import questions from './questions.json'
 
 
 function App() {
+  var array = [];
+  for(var i = 0; i < questions.length; ++i) {
+      array.push(false);
+  }
   return (
     <div className="App">
       <Container>
@@ -14,7 +18,7 @@ function App() {
           <Typography variant="h4" align="center" margin-top="10vh">
             Privilege Check
           </Typography>
-          <Quiz questions={['q1', 'q2', 'q3', 'q4']} numberQuestions={4}/>
+          <Quiz questions={questions} numberQuestions={questions.length} checked={array}/>
       </Container>
     </div>
   );
