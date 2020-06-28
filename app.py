@@ -1,16 +1,16 @@
-from flask import Flask, request,abort
-import db_connection
-
-
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
-def index():
-    return ('hello world this is flask')
+def home():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
-@app.route('/results', methods = ['POST'])
+""" @app.route('/results', methods = ['POST'])
 def getResults():
     results = request.get_json()
     top_three = get_top_three(results)
@@ -23,4 +23,4 @@ def get_top_three(quiz_results):
     results_dict = dict(quiz_results)
     sorted_results = sorted(results_dict.items(),key=lambda x: x[1], reverse=True)
     top_three = [sorted_results[0][0],sorted_results[1][0], sorted_results[2][0]]
-    return top_three
+    return top_three """
