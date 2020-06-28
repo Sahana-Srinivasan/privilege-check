@@ -33,7 +33,7 @@ class App extends React.Component {
                      numberQuestions={questions.length} 
                      checked={array}
                      sendResults={this.updateResults}/>}/>
-            <Route exact path={`/results`} render={() => <Results results={results}/>} />
+            <Route exact path={`/results`} render={() => <Results results={this.state.results}/>} />
           </Switch>
         </div>
       </Router>   

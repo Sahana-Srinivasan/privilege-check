@@ -6,8 +6,13 @@ class Results extends React.Component {
     }
 
     render () {
+      const completed = Object.keys(this.props.results).length !== 0;
+      console.log(this.props.results);
       return (
-        <p>{this.props.results}</p>  
+        <div>
+            <p>{completed && 'hi we\'ve detected results'}</p>
+            <p>{!completed && 'You should fill out the quiz first!'}</p>
+        </div>
       );
     }
 }
