@@ -1,9 +1,15 @@
 import React from 'react';
 
-function Results() {
-    return(
-        <p>hi there!</p>
-    )
-}
+class Results extends React.Component {
+    constructor(props) {
+      super(props);
+    }
 
+    render () {
+      return (
+        <p>{this.props.results}</p>  
+      );
+    }
+}
+  
 export default Results;
