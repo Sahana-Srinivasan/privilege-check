@@ -3,6 +3,7 @@ import './App.css';
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Quiz from './Quiz.js'
+import questions from './questions.json'
 
 
 function App() {
